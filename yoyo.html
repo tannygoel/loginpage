@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task2</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="myScript.js"></script>
+<style type="text/css"> 
+body
+{
+  background-color:slateblue; 
+}
+.form-control
+{
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-radius: 7px;
+}
+.bt{
+  width: 100%;
+  padding: 10px 20px;
+  color: white;
+ border-radius: 7px;
+  background-color: #3CBC8D;
+}
+.h1
+{
+  text-align:center;
+  color: white;
+}
+
+span
+{
+  color: white;
+  margin-top: 25px; 
+  margin-left: 35px;
+}
+.pstyle
+{
+  text-align:center;color:white;
+}
+a
+{
+  color:white;
+}
+form
+{
+  padding-right: 20px;
+  padding-left: 30px;
+  padding-bottom: 40px;
+  padding-top: 20px;
+}
+.error {
+    color:red;
+}
+.formstyle
+{
+  background-color: white;
+  border-radius: 7px;
+}
+</style>
+</head>
+<body >
+<div>
+<h1><a href="d.html" class="" >
+         <span class="glyphicon glyphicon-home"></span>
+       </a><h1>
+               <a href="#" class="text-white"><i class="mdi mdi-home"></i></a>             
+</div>
+<br></br>
+<section>  
+      <div class="container-fluid">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <h2 class="h1"> Canvab</h2> 
+         <br></br>
+          <form id="login_form" name="loginform" class="formstyle" method="post" action="sucess.html">
+            <div class="form-group ">
+              <label ></label>
+              <input type="email" name="email" id="email" class="form-control" placeholder="Enter email" >              
+            </div>
+            <div class="form-group ">
+              <label></label>
+              <input type="password" name="password" id="password" class="form-control" placeholder="Enter password">    </div>
+              <br>
+            <div class="checkbox">
+              <label><input type="checkbox" >Check this custom checkbox</label>
+            </div>
+            <br>
+            <button type="submit" class="bt" > Sign in</button>
+          </form>             
+      <div class="col-sm-4"></div>
+</section>
+<br></br><br>
+<p class="pstyle"><a href="#" class="href_forgot" >Forgot Your Password? </a> </p> 
+<p class="pstyle"><label class="label_style" >dont have account ?</label>
+<a href = "#" class="href_forgot" > Create An Account</a> </p> </div>
+<script type="text/javascript">
+$(document).ready(function()
+{
+  $.validator.addMethod("special",function(value,char)
+    {
+      return this.optional(char)||/^[a-z0-9\_]+$/i.test(value)},""),
+  $.validator.addMethod("lower",function(value,char)
+    {
+      return this.optional(char)||/[a-z]+/.test(value)},""),
+  $.validator.addMethod("uper",function(value,char)
+    {
+      return this.optional(char)||/[A-Z]+/.test(value)},""), 
+  $("#login_form").validate(
+    {
+      rules:{
+        email:{
+          required:(!0)
+        },
+        password:{
+          required:(!0),minlength:(8), special:(!0),lower:(!0),uper:(!0)          
+        }
+        },
+        messages:{
+          password:{
+            required:"enter password", minlength:"length greater than 8", special:"no special char",lower:"one Lower case alphabet", uper:"one Upper case alphabet"
+            }
+          },
+          highlight: function (char) {
+            $(char).parent().addClass('error')
+        },
+        unhighlight: function (char) {
+            $(char).parent().removeClass('error')
+        }
+        }
+        ) 
+});  
+</script>
+</body>
+</html>
